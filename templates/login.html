@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+
+    <div class="index_div">
+        <form action="/login" method="post">
+            <h1>Log in</h1>
+            
+            <input required autocomplete="off" autofocus name="username" placeholder="Username" type="text">
+            <br>
+            <input required autcomplete="off" autofocus name="password" placeholder="Password" type="password">
+            <button type="submit">Submit</button>
+            <p>Don't have a username? <a href="{{ url_for('signup')}}">Sign up</a></p>
+        </form>
+    </div>
+
+{% endblock %}
