@@ -14,9 +14,20 @@ def get_db():
 def create_bcrypt():
     return Bcrypt(app)
 
+def password_passes_requirements(password):
+
+    if len(password) < 6:
+        return False
+    
+
+
+
 @app.route("/")
 def index():
-    return render_template("index.html")
+    if 'logged_in' in session and session["logged_in"]:
+        return f"<h1>{ session["username"] }"
+    else:
+        return redirect(url_for('login'))
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -26,7 +37,9 @@ def login():
     if request.method == "POST":
         username = request.form.get("username")
         password = request.form.get("password")
-
+        
+        # TODO Close database cursor and do try & except
+        
         db = get_db()
         cur = db.cursor()
         # Get users When username, and password match
@@ -34,18 +47,16 @@ def login():
         user_info = cur.fetchone()
         db.commit()
 
-        if not user_info:
-            flash("User not found")
+
+        # If password does not match or user doesn't exist
+        if not user_info or not bcrypt.check_password_hash(user_info["password"], password):
+            flash("Invalid username or password")
             return redirect("/login")
 
-        # If password does not match
-        if not bcrypt.check_password_hash(user_info["password"], password):
-            flash("Invalid password")
-            return redirect("/login")
+        session["username"] = user_info["username"]
+        session["logged_in"] = True
 
-        session["user_id"] = user_info["id"]
-
-        return redirect("/login")
+        return redirect(url_for("index"))
 
     else:
         return render_template("login.html")
@@ -67,6 +78,10 @@ def signup():
         # Hash password  
         password = request.form.get("password")
 
+        if not password_passes_requirements(password):
+            flash("Password must include 6 or more characters")
+            return redirect("/signup")
+        
         if not name or not password:
             flash("Input must be valid")
             return redirect(url_for('signup'))
@@ -85,6 +100,7 @@ def signup():
             
             db.commit()
             db.close()
+
         except sqlite3.IntegrityError:
             flash("User Already Exists")
             return redirect("/signup")
@@ -93,6 +109,7 @@ def signup():
         return redirect("/login")
 
     return render_template("signup.html")
+
 
 if __name__ == "__main__":
     app.run(debug=True)

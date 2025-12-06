@@ -41,7 +41,7 @@ body
 
     opacity: 0.85;
     border-radius: 4px;
-    background-color: rgba(202, 192, 184, 0.945);
+    background-color: #e7e7e7;
 
 }
 
@@ -49,8 +49,6 @@ form
 {
     width: 100%;
     height: auto;
-    background-color: blue;
-
     display: flex;
     align-items: center;
 
@@ -72,16 +70,17 @@ form
 .access_fields
 {
     width: 65%;
-    height: 35px;
+    height: 40px;
     margin-top: 9px;
+    font-size: 1.15em;
 
 }
 
 .access_transition
 {
     margin: 0;
-    margin-top: 3px;
-    margin-right: 50px;
+    margin-top: 6px;
+    margin-right: 90px;
 }
 
 .access_buttons
