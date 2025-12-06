@@ -65,8 +65,15 @@ def signup():
         
         name = request.form.get("username")
         # Hash password  
-        password = bcrypt.generate_password_hash(request.form.get("password")).decode('utf-8')
+        password = request.form.get("password")
+
+        if not name or not password:
+            flash("Input must be valid")
+            return redirect(url_for('signup'))
+
+        hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
         
+
 
         try:
 
@@ -74,9 +81,10 @@ def signup():
             cur = db.cursor()
 
             cur.execute("INSERT INTO users (username, password) VALUES (?, ?)",
-                        (name, password))
+                        (name, hashed_password))
+            
             db.commit()
-
+            db.close()
         except sqlite3.IntegrityError:
             flash("User Already Exists")
             return redirect("/signup")
