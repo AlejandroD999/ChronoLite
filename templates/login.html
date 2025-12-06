@@ -5,13 +5,14 @@
 
     <div class="index_div">
         <form action="/login" method="post">
-            <h1>Log in</h1>
+            <h1 class="access_headers">Log in</h1>
             
-            <input required autocomplete="off" autofocus name="username" placeholder="Username" type="text">
+            <input required class="access_fields" autocomplete="off" autofocus name="username" placeholder="Username" type="text">
             <br>
-            <input required autcomplete="off" autofocus name="password" placeholder="Password" type="password">
-            <button type="submit">Submit</button>
-            <p>Don't have an account? <a href="{{ url_for('signup')}}">Sign up</a></p>
+            <input required class="access_fields" autcomplete="off" autofocus name="password" placeholder="Password" type="password">
+            <p class="access_transition">Don't have an account? <a href="{{ url_for('signup')}}">Sign up</a></p>
+            <button class="access_buttons" type="submit">continue</button>
+
         </form>
     </div>
 

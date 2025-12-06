@@ -3,18 +3,101 @@ body
     width: 100vw;
     height: 100vh;
 
+    font-size: 16px;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: rgb(25, 27, 41);
 }
 
+.flash_box
+{
+    /* Change style into readable and small */
+    width: 45%;
+    height: 15%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    top: 0;
+    left: center;
+    margin-top: 10px;
+
+    border-radius: 8px;
+    background-color: grey;
+    opacity: 0.87;
+
+}
+
 .index_div
 {
     width: 33%;
-    height: 70%;
+    height: 65%;
+    position: relative;
+    display: flex;
+    justify-content: center;
 
-    border-radius: 8px;
-    background-color: rgba(214, 149, 96, 0.938);
+    opacity: 0.85;
+    border-radius: 4px;
+    background-color: rgba(202, 192, 184, 0.945);
 
+}
+
+form
+{
+    width: 100%;
+    height: auto;
+    background-color: blue;
+
+    display: flex;
+    align-items: center;
+
+    flex-direction: column;
+    margin: 5px;
+}
+
+
+.access_headers
+{
+    font-size: 2.25em;
+    font-style: bold;
+    text-align: center;
+    margin: 0;
+    margin-bottom: 51px;
+    
+}  
+
+.access_fields
+{
+    width: 65%;
+    height: 35px;
+    margin-top: 9px;
+
+}
+
+.access_transition
+{
+    margin: 0;
+    margin-top: 3px;
+    margin-right: 50px;
+}
+
+.access_buttons
+{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    width: 25%;
+    height: 40px;
+    font-size: 1.25em;
+    background-color: rgb(64, 137, 206);
+    color: rgb(255, 227, 227);
+
+    font-size: 1em;
+    position: absolute;
+    bottom: 3%;
+    right: 15px;
 }

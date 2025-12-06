@@ -4,13 +4,14 @@
 {% block content %}
     <div class="index_div">
         <form action="/signup" method="post">
-            <h1>Sign Up</h1>
-            
-            <input required autocomplete="off" autofocus name="username" placeholder="Username" type="text">
+            <h1 class="access_headers">Sign Up</h1>
+
+            <input required class="access_fields" autocomplete="off" autofocus name="username" placeholder="Username" type="text">
             <br>
-            <input required autcomplete="off" autofocus name="password" placeholder="Password" type="password">
-            <button type="submit">Submit</button>
-            <p>Already have an account? <a href="{{ url_for('login')}}">Log in</a></p>
+            <input required class="access_fields" autcomplete="off" autofocus name="password" placeholder="Password" type="password">
+            <p class="access_transition">Already have an account? <a href="{{ url_for('login')}}">Log in</a></p>
+            <button class="access_buttons" type="submit">Continue</button>
+
         </form>
     </div>
 

@@ -8,11 +8,11 @@
     <body>
         {% with messages = get_flashed_messages() %}
             {% if messages %}
-                <ul>
+                <div class="flash_box">
                     {% for message in messages %}
-                        <li>{{ message }}</li>
+                        <h2>{{ message }}</h2>
                     {% endfor %}
-                </ul>
+                </div>
             {% endif %}
         {% endwith %}
 

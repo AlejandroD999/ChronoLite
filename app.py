@@ -67,9 +67,12 @@ def signup():
         # Hash password  
         password = bcrypt.generate_password_hash(request.form.get("password")).decode('utf-8')
         
-        db = get_db()
-        cur = db.cursor()
+
         try:
+
+            db = get_db()
+            cur = db.cursor()
+
             cur.execute("INSERT INTO users (username, password) VALUES (?, ?)",
                         (name, password))
             db.commit()
