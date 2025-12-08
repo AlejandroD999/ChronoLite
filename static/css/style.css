@@ -63,6 +63,7 @@ form
     font-style: bold;
     text-align: center;
     margin: 0;
+    margin-top: 19px;
     margin-bottom: 51px;
     
 }  
@@ -70,9 +71,9 @@ form
 .access_fields
 {
     width: 65%;
-    height: 40px;
+    height: 45px;
     margin-top: 9px;
-    font-size: 1.15em;
+    font-size: 1.20em;
 
 }
 

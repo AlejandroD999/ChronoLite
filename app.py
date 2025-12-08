@@ -1,11 +1,12 @@
 from flask import Flask, after_this_request, flash, render_template, redirect, request, session, url_for
 from flask_bcrypt import Bcrypt
+from datetime import timedelta
 import secrets
 import sqlite3
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = secrets.token_hex(22)
-
+app.permanent_session_lifetime = timedelta(days=3)
 def get_db():
     conn = sqlite3.connect("data/users.db")
     conn.row_factory = sqlite3.Row
@@ -21,11 +22,10 @@ def password_passes_requirements(password):
     
 
 
-
 @app.route("/")
 def index():
     if 'logged_in' in session and session["logged_in"]:
-        return f"<h1>{ session["username"] }"
+        return render_template("index.html")
     else:
         return redirect(url_for('login'))
 
@@ -53,6 +53,7 @@ def login():
             flash("Invalid username or password")
             return redirect("/login")
 
+        session.permanent = True
         session["username"] = user_info["username"]
         session["logged_in"] = True
 

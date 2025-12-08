@@ -1,7 +1,23 @@
 {% extends "layout.html" %}
 
-{% block content %}
+{% block head_tags %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+{% endblock %}
 
-    <h1>Home</h1>
+
+{% block content %}
+    <nav class="navbar">
+        <ul>
+            <li><a href="">Home</a></li>
+            <li><a href="">About</a></li>
+            <li><a href="">Summaries</a></li>            
+        </ul>
+    </nav>
+
+    <main>
+        <h3>This is the home page</h3>
+        <p>lorem</p>
+    </main>
+
 
 {% endblock %}
