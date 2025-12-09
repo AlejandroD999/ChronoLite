@@ -20,15 +20,24 @@ def password_passes_requirements(password):
     if len(password) < 6:
         return False
     
-
+def is_logged_in():
+    if 'logged_in' in session and session["logged_in"]:
+        return True
+    return False
 
 @app.route("/")
 def home():
-    if 'logged_in' in session and session["logged_in"]:
+    if is_logged_in():
         return render_template("home/home.html")
     else:
         return redirect(url_for('login'))
 
+@app.route("/about")
+def about():
+    if is_logged_in():
+        return render_template("home/about.html")
+    else:
+        return redirect(url_for("login"))
 
 
 @app.route("/login", methods=["GET", "POST"])
