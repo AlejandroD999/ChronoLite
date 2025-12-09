@@ -1,0 +1,23 @@
+{% extends "auth/layout.html" %}
+
+{% block head_tags %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> 
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+{% endblock %}
+
+{% block content %}
+    <div class="index_div">
+        <form action="/signup" method="post">
+            <h1 class="auth_headers">Sign Up</h1>
+
+            <input required class="auth_fields" autocomplete="off" autofocus name="username" placeholder="Username" type="text">
+            <br>
+            <input required class="auth_fields" autcomplete="off" autofocus name="password" placeholder="Password" type="password">
+            <p class="auth_transition">Already have an account? <a href="{{ url_for('login')}}">Log in</a></p>
+            <button class="auth_buttons" type="submit">Continue</button>
+
+        </form>
+    </div>
+
+{% endblock %}

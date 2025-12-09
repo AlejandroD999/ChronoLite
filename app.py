@@ -72,7 +72,7 @@ def login():
         return redirect(url_for("home"))
 
     else:
-        return render_template("access/login.html")
+        return render_template("auth/login.html")
     
 
 
@@ -121,7 +121,7 @@ def signup():
 
         return redirect("/login")
 
-    return render_template("access/signup.html")
+    return render_template("auth/signup.html")
 
 
 if __name__ == "__main__":

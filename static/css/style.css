@@ -57,7 +57,7 @@ form
 }
 
 
-.access_headers
+.auth_headers
 {
     font-size: 2.25em;
     font-style: bold;
@@ -68,7 +68,7 @@ form
     
 }  
 
-.access_fields
+.auth_fields
 {
     width: 65%;
     height: 45px;
@@ -77,14 +77,14 @@ form
 
 }
 
-.access_transition
+.auth_transition
 {
     margin: 0;
     margin-top: 6px;
     margin-right: 90px;
 }
 
-.access_buttons
+.auth_buttons
 {
     overflow: hidden;
     white-space: nowrap;
