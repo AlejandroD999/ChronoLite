@@ -6,7 +6,7 @@ import sqlite3
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = secrets.token_hex(22)
-app.permanent_session_lifetime = timedelta(days=3)
+app.config["PERMANENT_SESSION_LIFETIME"] = timedelta(days=3)
 def get_db():
     conn = sqlite3.connect("data/users.db")
     conn.row_factory = sqlite3.Row
@@ -23,11 +23,13 @@ def password_passes_requirements(password):
 
 
 @app.route("/")
-def index():
+def home():
     if 'logged_in' in session and session["logged_in"]:
-        return render_template("index.html")
+        return render_template("home/home.html")
     else:
         return redirect(url_for('login'))
+
+
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -53,14 +55,15 @@ def login():
             flash("Invalid username or password")
             return redirect("/login")
 
-        session.permanent = True
+
         session["username"] = user_info["username"]
         session["logged_in"] = True
+        session.permanent = True
 
-        return redirect(url_for("index"))
+        return redirect(url_for("home"))
 
     else:
-        return render_template("login.html")
+        return render_template("access/login.html")
     
 
 
@@ -81,7 +84,7 @@ def signup():
 
         if not password_passes_requirements(password):
             flash("Password must include 6 or more characters")
-            return redirect("/signup")
+            return redirect(url_for("signup"))
         
         if not name or not password:
             flash("Input must be valid")
@@ -109,7 +112,7 @@ def signup():
 
         return redirect("/login")
 
-    return render_template("signup.html")
+    return render_template("access/signup.html")
 
 
 if __name__ == "__main__":

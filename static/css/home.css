@@ -1,4 +1,35 @@
 body
 {
-    background-color: black;
+    margin: 0;
+}
+
+h1
+{
+    text-align: center;
+}
+.navbar ul 
+{
+    font-size: 1.10em;
+    overflow: hidden;
+    list-style-type: none;
+    background-color: gray;
+    padding: 0px;
+    margin: 0px;
+}
+.navbar a
+{   
+    color: white;
+    text-decoration: none;
+    padding: 15px;
+    display: block;
+    text-align: center;
+
+}
+.navbar a:hover
+{
+    background-color: rgba(0, 0, 0, 0.541);
+}
+.navbar li
+{
+    float: right;
 }
